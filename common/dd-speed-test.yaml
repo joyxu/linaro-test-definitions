@@ -23,7 +23,7 @@ params:
     PARTITION: ""
     # CAUTION: if FS_TYPE not equal to the existing fs type of the partition
     # specified with '-p', the partition will be formatted.
-    FS_TYPE: ""
+    FS_TYPE: "ext4"
     # You may need to run dd test 4-5 times for an accurate evaluation.
     ITERATION: "5"
 
