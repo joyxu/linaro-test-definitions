@@ -1,0 +1,47 @@
+metadata:
+    name: qemu-kvm-storage
+    format: "Lava-Test-Shell Test Definition 1.0"
+    description: "Test QEMU with KVM"
+    maintainer:
+        - xuwei5@hisilicon.com
+    scope:
+        - functional
+        - virtualization
+    os:
+        - ubuntu
+    devices:
+        - d05
+    environment:
+        - lava-test-shell
+
+install:
+    deps:
+        - gcc
+        - libffi-dev
+        - libssl-dev
+        - arping
+        - wget
+        - liblzma-dev
+        - libvirt-dev
+        - python-netifaces
+        - bridge-utils
+        - qemu-efi
+        - libglib2.0-dev
+        - zlib1g-dev
+        - build-essential
+        - lynx
+        - python-pip
+        - pkg-config
+        - libpixman-1-dev
+        - python-libvirt
+
+params:
+    CONFIGURATION: storage
+
+run:
+    steps:
+        - './ubuntu/scripts/qemu-kvm/pre-test.sh'
+        - './ubuntu/scripts/qemu-kvm/test.sh ${CONFIGURATION}'
+        - '[ -f /root/avocado/job-results/avocado-vt-result.tar.bz2 ] && lava-test-run-attach /root/avocado/job-results/avocado-vt-result.tar.bz2'
+parse:
+    pattern: '^<TEST_CASE_ID=(?P<test_case_id>.+): RESULT=(?P<result>\w+) UNIT=(?P<units>.+) MEASUREMENT=(?P<measurement>[0-9.]+)>'
