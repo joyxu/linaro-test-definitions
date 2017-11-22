@@ -14,7 +14,8 @@ tamper_guest()
     qemu-nbd -c /dev/nbd0 $guest
     sleep 2
     mount /dev/nbd0p1 /mnt/
-    mv Image /mnt/boot/vmlinuz
+    mv /mnt/boot/vmlinuz-4.4.0-97-generic /mnt/boot/vmlinuz-4.4.0-97-generic.orig
+    mv Image /mnt/boot/vmlinuz-4.4.0-97-generic
     umount /mnt
     sync
     qemu-nbd -d /dev/nbd0
