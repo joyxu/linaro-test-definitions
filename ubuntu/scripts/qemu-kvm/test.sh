@@ -68,7 +68,7 @@ echo "................................................"
 echo "#avocado-vt: get the guest Ubuntu rootfs image#"
 echo "................................................"
 $($DOWNLOAD_FILE ${FILE_SERVER_URL}${GUEST_UBUNTU_IMAGE})
-tamper_guest xenial-server-cloudimg-arm64-uefi1.img
+#tamper_guest xenial-server-cloudimg-arm64-uefi1.img
 rm -rf /var/lib/avocado/data/avocado-vt/images/ubuntu-16.04-lts-aarch64*
 cp ${GUEST_UBUNTU_IMAGE} /var/lib/avocado/data/avocado-vt/images/ubuntu-16.04-lts-aarch64.qcow2
 
