@@ -67,3 +67,4 @@ python setup.py install
 cd ../avocado
 make link
 avocado vt-bootstrap --vt-type qemu --vt-guest-os Ubuntu.16.04-server --vt-no-downloads
+cp /usr/share/AAVMF/AAVMF_VARS.fd /var/lib/avocado/data/avocado-vt/images/ubuntu-16.04-lts-aarch64_AAVMF_VARS.fd
