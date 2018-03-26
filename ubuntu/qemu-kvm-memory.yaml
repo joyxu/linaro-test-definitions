@@ -34,6 +34,7 @@ install:
         - pkg-config
         - libpixman-1-dev
         - python-libvirt
+        - numactl
 
 params:
     CONFIGURATION: memory
