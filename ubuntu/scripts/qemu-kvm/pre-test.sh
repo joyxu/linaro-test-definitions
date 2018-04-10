@@ -70,3 +70,10 @@ rm -rf /var/lib/avocado/data/avocado-vt/backends/qemu/cfg/
 avocado vt-bootstrap --vt-type qemu --vt-guest-os Ubuntu.16.04-server --vt-no-downloads
 avocado vt-bootstrap --vt-type qemu --vt-guest-os Ubuntu.16.04-server --vt-update-providers
 cp /usr/share/AAVMF/AAVMF_VARS.fd /var/lib/avocado/data/avocado-vt/images/ubuntu-16.04-lts-aarch64_AAVMF_VARS.fd
+
+LINK_SH=`readlink /bin/sh`
+if [ $LINK_SH != "/bin/bash"]
+then
+    mv /bin/sh /bin/sh.orig
+    ln -s /bin/bash /bin/sh
+fi
