@@ -50,7 +50,7 @@ parse_result()
 }
 
 FILE_SERVER_URL="http://192.168.3.100:8083/"
-KERNEL_IMAGE_SUFFIX="arm64-defconfig%2Bcommon-config%2Bd05-config/"
+KERNEL_IMAGE_SUFFIX="arm64-defconfig%2Bplinth-config/"
 GUEST_UBUNTU_IMAGE="xenial-server-cloudimg-arm64-uefi1.img"
 OUTPUT_DIR="/root/avocado/job-results/"
 OUTPUT_FILE="stdout_$(date +%Y%m%d%H%M%S)"
@@ -71,6 +71,7 @@ $($DOWNLOAD_FILE ${FILE_SERVER_URL}${GUEST_UBUNTU_IMAGE})
 tamper_guest xenial-server-cloudimg-arm64-uefi1.img
 rm -rf /var/lib/avocado/data/avocado-vt/images/ubuntu-16.04-lts-aarch64*
 cp ${GUEST_UBUNTU_IMAGE} /var/lib/avocado/data/avocado-vt/images/ubuntu-16.04-lts-aarch64.qcow2
+cp /usr/share/AAVMF/AAVMF_VARS.fd /var/lib/avocado/data/avocado-vt/images/ubuntu-16.04-lts-aarch64_AAVMF_VARS.fd
 
 #run avocado test suite
 echo "................................................"
