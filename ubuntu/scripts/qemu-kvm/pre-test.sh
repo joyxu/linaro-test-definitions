@@ -72,7 +72,7 @@ avocado vt-bootstrap --vt-type qemu --vt-guest-os Ubuntu.16.04-server --vt-updat
 cp /usr/share/AAVMF/AAVMF_VARS.fd /var/lib/avocado/data/avocado-vt/images/ubuntu-16.04-lts-aarch64_AAVMF_VARS.fd
 
 LINK_SH=`readlink /bin/sh`
-if [ $LINK_SH != "/bin/bash"]
+if [ $LINK_SH != "/bin/bash" ]
 then
     mv /bin/sh /bin/sh.orig
     ln -s /bin/bash /bin/sh
