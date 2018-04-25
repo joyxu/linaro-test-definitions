@@ -96,6 +96,9 @@ parse_result ${OUTPUT_DIR}${OUTPUT_FILE}.log
 cd "/root/avocado/job-results"
 mv  ${OUTPUT_DIR}${OUTPUT_FILE}.log latest/
 rm -rf avocado-vt-result.tar.bz2
-sync
 tar -hcjf avocado-vt-result.tar.bz2 -C ${OUTPUT_DIR} latest
+echo "................................................"
+echo "#avocado-vt: archive the virtualization test result#"
+echo "................................................"
 sync
+sleep 2
