@@ -42,6 +42,7 @@ parse_result()
 		    else
 		       echo "<TEST_CASE_ID=${test} RESULT=${result} UNITS=${units} MEASUREMENT=${measurement}>"
 		    fi
+		    sleep 1
 		fi
 	    done < "${RESULT_FILE}"
 	else
