@@ -17,7 +17,7 @@ fi
 
 cd qemu.git
 git fetch && git fetch -t
-BRANCH=$(git describe --abbrev=0 --tags)
+BRANCH=$(git describe --tags `git rev-list --tags --max-count=1`)
 echo "checkout the latest qeumu tag: "$BRANCH
 git checkout -b $BRANCH
 git submodule update --init dtc
