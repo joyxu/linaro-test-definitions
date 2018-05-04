@@ -74,6 +74,13 @@ rm -rf /var/lib/avocado/data/avocado-vt/images/ubuntu-16.04-lts-aarch64*
 cp ${GUEST_UBUNTU_IMAGE} /var/lib/avocado/data/avocado-vt/images/ubuntu-16.04-lts-aarch64.qcow2
 cp /usr/share/AAVMF/AAVMF_VARS.fd /var/lib/avocado/data/avocado-vt/images/ubuntu-16.04-lts-aarch64_AAVMF_VARS.fd
 
+if [ $1 = "computing" ]; then
+	echo "................................................"
+	echo "#avocado-vt: run the kvm unit test test cases#"
+	echo "................................................"
+	/root/avocado_test/avocado/contrib/testsuites/run-kvm-unit-test.sh 2>&1 | tee -a ${OUTPUT_DIR}${OUTPUT_FILE}.log
+fi
+
 #run avocado test suite
 echo "................................................"
 echo "#avocado-vt: run the virtualization test cases#"
@@ -82,13 +89,6 @@ mkdir -p ${OUTPUT_DIR}
 cd /var/lib/avocado/data/avocado-vt/backends/qemu/cfg
 echo "avocado run --vt-type qemu --vt-guest-os Ubuntu.16.04-server.aarch64 --vt-config ./${CONFIGURATION_FILE} 2>&1 | tee -a ${OUTPUT_DIR}${OUTPUT_FILE}.log"
 avocado run --vt-type qemu --vt-guest-os Ubuntu.16.04-server.aarch64 --vt-config ./${CONFIGURATION_FILE} 2>&1 | tee -a ${OUTPUT_DIR}${OUTPUT_FILE}.log
-
-if [ $1 = "computing" ]; then
-	echo "................................................"
-	echo "#avocado-vt: run the kvm unit test test cases#"
-	echo "................................................"
-	/root/avocado_test/avocado/contrib/testsuites/run-kvm-unit-test.sh 2>&1 | tee -a ${OUTPUT_DIR}${OUTPUT_FILE}.log
-fi
 
 echo "................................................"
 echo "#avocado-vt: parse the virtualization test result#"
