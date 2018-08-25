@@ -19,7 +19,7 @@ cd qemu.git
 git fetch && git fetch -t
 BRANCH=$(git describe --tags `git rev-list --tags --max-count=1`)
 echo "checkout the latest qeumu tag: "$BRANCH
-git checkout -b $BRANCH
+git checkout -b $BRANCH $BRANCH
 git submodule update --init dtc
 ./configure --target-list=aarch64-softmmu
 make -j32
